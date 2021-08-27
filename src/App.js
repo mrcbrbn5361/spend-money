@@ -1,35 +1,37 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { Item } from './components/Item';
+import obj from './myStore';
 
 function App() {
   const [money, setMoney] = useState(1000000);
   const [data, setData] = useState([]);
 
-  // let changeMoney = (greens) => {
-  //   setMoney(money - greens);
-  // };
+  let changeMoney = (greens) => {
+    setMoney(money - greens);
+  };
 
-  // let changeMoney2 = (greens) => {
-  //   setMoney(money + greens);
-  // };
+  let changeMoney2 = (greens) => {
+    setMoney(money + greens);
+  };
 
-  // let changeMoney3 = (greens) => {
-  //   setMoney(money - greens);
-  // };
+  let changeMoney3 = (greens) => {
+    setMoney(money - greens);
+  };
 
   let updateMoney = (greens) => {
     setMoney(money - greens);
   };
 
   useEffect(() => {
-    fetch('http://localhost:3000/db.json')
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setData(data.items);
-      });
+    setData(obj.items);
+    // fetch('http://localhost:3000/db.json')
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     setData(data.items);
+    //   });
   }, []);
 
   return (
