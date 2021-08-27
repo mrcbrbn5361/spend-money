@@ -12,10 +12,10 @@ export const Item = ({ data, changeMoney, changeMoney2, changeMoney3, updateMone
   };
 
   let onHandleChange = (event) => {
-    console.log('input changed');
-    console.log(event.target.value);
+    // console.log('input changed');
+    // console.log(event.target.value);
     setCounter(event.target.value);
-    console.log(counter);
+    // console.log(counter);
     // changeMoney3(event.target.value * data.price);
   };
 
