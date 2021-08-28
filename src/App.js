@@ -61,18 +61,23 @@ import obj from './myStore';
 //   );
 // }
 
-const items = [
-  { key: 'bigmac', price: 2, title: 'BigMac' },
-  { key: 'car', price: 200, title: 'Car' },
-  { key: 'nbteam', price: 2000, title: 'nbTeam' },
-];
+// const items = [
+//   { key: 'bigmac', price: 2, title: 'BigMac' },
+//   { key: 'car', price: 200, title: 'Car' },
+//   { key: 'nbteam', price: 2000, title: 'nbTeam' },
+// ];
 
-const money = 1000000;
+const money = 100000000000;
 
 function App() {
   const [info, setInfo] = useState({});
   console.log(info);
-  console.log(Object.values(info));
+
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    setItems(obj.items);
+  }, []);
   return (
     <div className="App">
       <div>
@@ -83,11 +88,11 @@ function App() {
       <div>
         {items.map((item) => (
           <Input
-            key={item.key}
+            key={item.id}
             onChange={setInfo}
             price={item.price}
-            itemKey={item.key}
-            title={item.title}
+            itemKey={item.name}
+            title={item.name}
           />
         ))}
       </div>
