@@ -4,69 +4,6 @@ import { Input } from './components/Input';
 import { Item } from './components/Item';
 import obj from './myStore';
 
-// function App() {
-//   const [money, setMoney] = useState(1000000);
-//   const [data, setData] = useState([]);
-
-//   let changeMoney = (greens) => {
-//     setMoney(money - greens);
-//   };
-
-//   let changeMoney2 = (greens) => {
-//     setMoney(money + greens);
-//   };
-
-//   let changeMoney3 = (greens) => {
-//     setMoney(money - greens);
-//   };
-
-//   let updateMoney = (greens) => {
-//     setMoney(money - greens);
-//   };
-
-//   useEffect(() => {
-//     setData(obj.items);
-//     // fetch('http://localhost:3000/db.json')
-//     //   .then((response) => {
-//     //     return response.json();
-//     //   })
-//     //   .then((data) => {
-//     //     setData(data.items);
-//     //   });
-//   }, []);
-
-//   return (
-//     <div className="App">
-//       <header>
-//         <img src="https://neal.fun/spend/billgates.jpg" alt="" />
-//         <h1>Spend Bill Gates' Money</h1>
-//       </header>
-//       <div className="money">${money}</div>
-//       <main>
-//         <div className="container">
-//           <div className="items__list">
-//             {data.map((data) => (
-//               <Item
-//                 data={data}
-//                 changeMoney={changeMoney}
-//                 changeMoney2={changeMoney2}
-//                 changeMoney3={changeMoney3}
-//                 updateMoney={updateMoney}
-//               />
-//             ))}
-//           </div>
-//         </div>
-//       </main>
-//     </div>
-//   );
-// }
-
-// const items = [
-//   { key: 'bigmac', price: 2, title: 'BigMac' },
-//   { key: 'car', price: 200, title: 'Car' },
-//   { key: 'nbteam', price: 2000, title: 'nbTeam' },
-// ];
-
 const money = 100000000000;
 
 function App() {
@@ -80,7 +17,7 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <div>
+      {/* <div>
         Money:{''}
         {money - Object.values(info).reduce((res, cur) => res + cur.count * cur.price, 0)}
       </div>
@@ -95,6 +32,123 @@ function App() {
             title={item.name}
           />
         ))}
+      </div> */}
+
+      <header>
+        <div className="container">
+          <div width="1000" className="header">
+            <a href="">Adilet.fun</a>
+          </div>
+        </div>
+      </header>
+
+      <div className="container p-0">
+        <h1 className="bill">
+          <img alt="Image of Bill Gates" src="https://neal.fun/spend/billgates.jpg" className="imgbil" />
+          Spend Bill Gates' Money
+        </h1>
+        <div className="countzz">
+          $100,000,000,000
+        </div>
+        <div className="row mt-2 px-2">
+          <div className="col-lg-4 col-sm-6 col-12 px-1 my-2">
+            <div className="product bg-white">
+              <img className="ml-auto mr-auto" src="https://neal.fun/spend/images/big-mac.jpg" alt="" />
+              <h3>Бургер</h3>
+              <p className="product__price"><span className="symbol">$</span>2<span className="price"></span></p>
+              <div className="buy-sell d-flex justify-content-between">
+                <button className="sell">Продать</button>
+                <input className="quantity" type="number" value="0" />
+                <button className="buy">Купить</button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-sm-6 col-12 px-1 my-2">
+            <div className="product bg-white">
+              <img className="ml-auto mr-auto" src="https://neal.fun/spend/images/big-mac.jpg" alt="" />
+              <h3>Бургер</h3>
+              <p className="product__price"><span className="symbol">$</span>2<span className="price"></span></p>
+              <div className="buy-sell d-flex justify-content-between">
+                <button className="sell">Продать</button>
+                <input className="quantity" type="number" value="0" />
+                <button className="buy">Купить</button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-sm-6 col-12 px-1 my-2">
+            <div className="product bg-white">
+              <img className="ml-auto mr-auto" src="https://neal.fun/spend/images/big-mac.jpg" alt="" />
+              <h3>Бургер</h3>
+              <p className="product__price"><span className="symbol">$</span>2<span className="price"></span></p>
+              <div className="buy-sell d-flex justify-content-between">
+                <button className="sell">Продать</button>
+                <input className="quantity" type="number" value="0" />
+                <button className="buy">Купить</button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-sm-6 col-12 px-1 my-2">
+            <div className="product bg-white">
+              <img className="ml-auto mr-auto" src="https://neal.fun/spend/images/big-mac.jpg" alt="" />
+              <h3>Бургер</h3>
+              <p className="product__price"><span className="symbol">$</span>2<span className="price"></span></p>
+              <div className="buy-sell d-flex justify-content-between">
+                <button className="sell">Продать</button>
+                <input className="quantity" type="number" value="0" />
+                <button className="buy">Купить</button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-sm-6 col-12 px-1 my-2">
+            <div className="product bg-white">
+              <img className="ml-auto mr-auto" src="https://neal.fun/spend/images/big-mac.jpg" alt="" />
+              <h3>Бургер</h3>
+              <p className="product__price"><span className="symbol">$</span>2<span className="price"></span></p>
+              <div className="buy-sell d-flex justify-content-between">
+                <button className="sell">Продать</button>
+                <input className="quantity" type="number" value="0" />
+                <button className="buy">Купить</button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-sm-6 col-12 px-1 my-2">
+            <div className="product bg-white">
+              <img className="ml-auto mr-auto" src="https://neal.fun/spend/images/big-mac.jpg" alt="" />
+              <h3>Бургер</h3>
+              <p className="product__price"><span className="symbol">$</span>2<span className="price"></span></p>
+              <div className="buy-sell d-flex justify-content-between">
+                <button className="sell">Продать</button>
+                <input className="quantity" type="number" value="0" />
+                <button className="buy">Купить</button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-sm-6 col-12 px-1 my-2">
+            <div className="product bg-white">
+              <img className="ml-auto mr-auto" src="https://neal.fun/spend/images/big-mac.jpg" alt="" />
+              <h3>Бургер</h3>
+              <p className="product__price"><span className="symbol">$</span>2<span className="price"></span></p>
+              <div className="buy-sell d-flex justify-content-between">
+                <button className="sell">Продать</button>
+                <input className="quantity" type="number" value="0" />
+                <button className="buy">Купить</button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4 col-sm-6 col-12 px-1 my-2">
+            <div className="product bg-white">
+              <img className="ml-auto mr-auto" src="https://neal.fun/spend/images/big-mac.jpg" alt="" />
+              <h3>Бургер</h3>
+              <p className="product__price"><span className="symbol">$</span>2<span className="price"></span></p>
+              <div className="buy-sell d-flex justify-content-between">
+                <button className="sell">Продать</button>
+                <input className="quantity" type="number" value="0" />
+                <button className="buy">Купить</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );

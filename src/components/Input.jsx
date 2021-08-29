@@ -28,7 +28,7 @@ export const Input = ({ itemKey, title, price, onChange }) => {
       <div>
         {title} - {price}$
       </div>
-      <button onClick={sellClick}>-</button>
+      <button disabled={count < 1 ? true : false} onClick={sellClick}>-</button>
       <input value={count || 0} onChange={changed} type="number" />
       <button onClick={buyClick}>+</button>
 
