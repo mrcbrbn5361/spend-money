@@ -120,13 +120,19 @@ header {
 }
 .sell {
   border: none;
-  color: rgb(51, 51, 51);
-  cursor: auto !important;
-  background: rgb(241, 242, 246);
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(180deg, #f53b82, #f53b57);
   font-size: 16px;
+  font-weight: bold;
   border-radius: 3px;
   text-align: center;
   width: 75px;
+}
+.sell.disabled {
+  cursor: auto;
+  background: rgb(241, 242, 246);
+  color: rgb(51, 51, 51);
 }
 .quantity {
   font-size: 16px;
@@ -163,6 +169,11 @@ input::-webkit-inner-spin-button {
   touch-action: manipulation;
   background: linear-gradient(rgb(46, 204, 113), rgb(26, 188, 156));
   width: 75px;
+}
+.buy.disabled {
+  cursor: auto;
+  background: #f1f2f6;
+  color: #333;
 }
 
 .not-disabled {
