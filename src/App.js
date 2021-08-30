@@ -1,45 +1,45 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { Input } from './components/Input';
 import { Item } from './components/Item';
-import obj from './myStore';
+import store from './myStore';
 
 const money = 100_000_000_000;
 
 function App() {
-  console.log((123456789).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+  // console.log('render app');
   const [info, setInfo] = useState({});
-
   const [items, setItems] = useState([]);
 
+  let bank = money - Object.values(info).reduce((res, cur) => res + cur.count * cur.price, 0);
+
   useEffect(() => {
-    setItems(obj.items);
+    setItems(store.items);
   }, []);
   return (
     <div className="App">
       <header>
         <div className="container">
           <div width="1000" className="header">
-            <a href="">Adilet.fun</a>
+            <a href="#">Adilet.fun</a>
           </div>
         </div>
       </header>
 
       <div className="container p-0">
         <h1 className="bill">
-          <img alt="Image of Bill Gates" src="https://neal.fun/spend/billgates.jpg" className="imgbil" />
+          <img
+            alt="Image of Bill Gates"
+            src="https://neal.fun/spend/billgates.jpg"
+            className="imgbil"
+          />
           Spend Bill Gates' Money
         </h1>
-        <div className="countzz">
-          ${(money - Object.values(info).reduce((res, cur) => res + cur.count * cur.price, 0)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-        </div>
+        <div className="countzz">${bank.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</div>
         <div className="row mt-2 px-2">
           {items.map((item) => (
-            <Item key={item.id} onChange={setInfo} itemKey={item.name} base={item} price={item.price}
-              title={item.name} />
+            <Item key={item.id} bank={bank} onChange={setInfo} base={item} price={item.price} />
           ))}
         </div>
-
       </div>
     </div>
   );
