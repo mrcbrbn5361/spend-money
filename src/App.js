@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { Input } from './components/Input';
 import { Item } from './components/Item';
 import obj from './myStore';
 
