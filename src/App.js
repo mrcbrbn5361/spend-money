@@ -10,9 +10,9 @@ function App() {
   const [items, setItems] = useState([]);
 
   let bank = money - Object.values(info).reduce((res, cur) => res + cur.count * cur.price, 0);
-  if (Object.values(info).reduce((res, cur) => res + cur.count * cur.price, 0) > money) {
-    bank = 0;
-  }
+  // if (Object.values(info).reduce((res, cur) => res + cur.count * cur.price, 0) > money) {
+  //   bank = 0;
+  // }
   useEffect(() => {
     setItems(store.items);
   }, []);

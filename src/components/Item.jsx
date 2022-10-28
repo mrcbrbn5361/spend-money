@@ -7,17 +7,32 @@ export const Item = ({ base, onChange, price, bank }) => {
     setCount(Number(count) - 1);
   };
   let buyClick = () => {
-    setCount(Number(count) + 1);
+    if (price <= bank) {
+      setCount(Number(count) + 1);
+    }
+
   };
-  console.log(bank);
 
   let changed = (e) => {
-    if (((count+1) * price) > bank) {
-      
-      console.log('stop');
+    if (e.target.value < 0) {
+      setCount(0)
     }
-    setCount(e.target.value.replace(/^0+/, '')); //0 в начале убирается
+  else if (e.target.value < count) {
+    setCount(e.target.value.replace(/^0+/, ''))
+
+  } else if (((e.target.value) * price) > bank+(count*price)) {
+      let newBank = bank + ((count)*price)
+      setCount( Math.floor( newBank/price) )
+
+      console.log('yes hier!');
+
+  } else {
+      setCount(e.target.value.replace(/^0+/, '')); //0 в начале убирается
+    }
+    
   };
+
+  
 
   useEffect(() => {
     onChange((prev) => {
@@ -28,6 +43,7 @@ export const Item = ({ base, onChange, price, bank }) => {
           count,
         },
       };
+      
     });
   }, [count]);
   return (
@@ -50,9 +66,9 @@ export const Item = ({ base, onChange, price, bank }) => {
           </button>
           <input className="quantity" value={count || 0} onChange={changed} type="number" />
           <button
-            disabled={bank < 2 ? true : false}
+            disabled={bank < price ? true : false}
             onClick={buyClick}
-            className={`buy ${bank < 2 ? 'disabled' : ''}`}>
+            className={`buy ${bank < price ? 'disabled' : ''}`}>
             Buy
           </button>
         </div>
