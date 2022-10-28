@@ -6,12 +6,13 @@ import store from './myStore';
 const money = 100_000_000_000;
 
 function App() {
-  // console.log('render app');
   const [info, setInfo] = useState({});
   const [items, setItems] = useState([]);
 
   let bank = money - Object.values(info).reduce((res, cur) => res + cur.count * cur.price, 0);
-
+  if (Object.values(info).reduce((res, cur) => res + cur.count * cur.price, 0) > money) {
+    bank = 0;
+  }
   useEffect(() => {
     setItems(store.items);
   }, []);

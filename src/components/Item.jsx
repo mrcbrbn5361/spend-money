@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 export const Item = ({ base, onChange, price, bank }) => {
-  console.log(onChange);
+  
   let [count, setCount] = useState(0);
   let sellClick = () => {
     setCount(Number(count) - 1);
@@ -9,8 +9,13 @@ export const Item = ({ base, onChange, price, bank }) => {
   let buyClick = () => {
     setCount(Number(count) + 1);
   };
+  console.log(bank);
 
   let changed = (e) => {
+    if (((count+1) * price) > bank) {
+      
+      console.log('stop');
+    }
     setCount(e.target.value.replace(/^0+/, '')); //0 в начале убирается
   };
 
