@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { Item } from './components/Item';
+import TotalInfoItem from './components/TotalInfoItem';
 import store from './myStore';
 
 const money = 100_000_000_000;
@@ -10,12 +11,18 @@ function App() {
   const [items, setItems] = useState([]);
 
   let bank = money - Object.values(info).reduce((res, cur) => res + cur.count * cur.price, 0);
-  // if (Object.values(info).reduce((res, cur) => res + cur.count * cur.price, 0) > money) {
-  //   bank = 0;
-  // }
   useEffect(() => {
     setItems(store.items);
   }, []);
+
+  let totalSum = () => {
+    let arr = Object.values(info).filter((item) => item.count > 0);
+    let totalSum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      totalSum = totalSum + arr[i].count * arr[i].price;
+    }
+    return totalSum;
+  };
   return (
     <div className="App">
       <header>
@@ -40,6 +47,19 @@ function App() {
           {items.map((item) => (
             <Item key={item.id} bank={bank} onChange={setInfo} base={item} price={item.price} />
           ))}
+        </div>
+
+        <div className="totalInfo row text-center mb-5">
+          <h2>Your Receipt</h2>
+          {Object.values(info)
+            .filter((item) => item.count > 0)
+            .map((item) => (
+              <TotalInfoItem totalInfo={item} />
+            ))}
+          <div className="total-price">
+            <h3>Total</h3>
+            <span>{totalSum()}</span>
+          </div>
         </div>
       </div>
     </div>

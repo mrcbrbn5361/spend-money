@@ -36,9 +36,12 @@ export const Item = ({ base, onChange, price, bank }) => {
 
   useEffect(() => {
     onChange((prev) => {
+      // console.log(prev);
       return {
         ...prev,
-        [base.name]: {
+        [base.id]: {
+          id: base.id,
+          name: base.name,
           price,
           count,
         },
