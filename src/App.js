@@ -23,6 +23,7 @@ function App() {
     }
     return totalSum;
   };
+
   return (
     <div className="App">
       <header>
@@ -49,18 +50,30 @@ function App() {
           ))}
         </div>
 
-        <div className="totalInfo row text-center mb-5">
-          <h2>Your Receipt</h2>
-          {Object.values(info)
-            .filter((item) => item.count > 0)
-            .map((item) => (
-              <TotalInfoItem totalInfo={item} />
-            ))}
-          <div className="total-price">
-            <h3>Total</h3>
-            <span>{totalSum()}</span>
+        {bank < 100_000_000_000 ? (
+          <div className="conclusion mt-2 bg-white text-center pt-3 pb-4">
+            <h2 className="pt-3 pb-4 mb-0">Your Receipt</h2>
+            <div className="total-info">
+              {Object.values(info)
+                .filter((item) => item.count > 0)
+                .map((item) => (
+                  <TotalInfoItem totalInfo={item} key={item.id} />
+                ))}
+
+              <div className="total-info__total">
+                <div className="total-info__total-name">TOTAL</div>
+                <div className="total-info__total-price">
+                  $
+                  {totalSum()
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );

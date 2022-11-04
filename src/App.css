@@ -181,3 +181,43 @@ input::-webkit-inner-spin-button {
   background: linear-gradient(rgb(245, 59, 130), rgb(245, 59, 87));
   cursor: pointer !important;
 }
+.conclusion h2{
+  font-weight: bold;
+  font-size: 28px;
+}
+.total-info__item{
+  max-width: 290px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: grid;
+  grid-gap: 10px 0;
+  font-size: 18px;
+  grid-template-columns: 170px 45px 75px;
+}
+.total-info__item *{
+  text-align: left;
+}
+.total-info__price{
+  text-align: right;
+  color: rgb(36, 196, 134);
+  font-weight: bold;
+}
+.total-info__total{
+  font-weight: 700;
+    max-width: 300px;
+    border-top: 1px solid #333;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+}
+.total-info__total-name{
+  font-weight: 700;
+}
+.total-info__total-price{
+  color: rgb(36, 196, 134);
+}

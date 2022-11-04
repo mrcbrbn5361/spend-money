@@ -24,7 +24,6 @@ export const Item = ({ base, onChange, price, bank }) => {
       let newBank = bank + ((count)*price)
       setCount( Math.floor( newBank/price) )
 
-      console.log('yes hier!');
 
   } else {
       setCount(e.target.value.replace(/^0+/, '')); //0 в начале убирается
@@ -36,7 +35,6 @@ export const Item = ({ base, onChange, price, bank }) => {
 
   useEffect(() => {
     onChange((prev) => {
-      // console.log(prev);
       return {
         ...prev,
         [base.id]: {
