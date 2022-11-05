@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import { Item } from './components/Item';
 import TotalInfoItem from './components/TotalInfoItem';
 import store from './myStore';
-
-const money = 100_000_000_000;
+import { setItems } from './redux/slices/ItemSlice';
 
 function App() {
-  const [info, setInfo] = useState({});
-  const [items, setItems] = useState([]);
+  const dispatch = useDispatch();
+
+  const { money, items, info } = useSelector((state) => state.item);
 
   let bank = money - Object.values(info).reduce((res, cur) => res + cur.count * cur.price, 0);
+
   useEffect(() => {
-    setItems(store.items);
+    dispatch(setItems(store.items));
   }, []);
 
   let totalSum = () => {
@@ -46,7 +48,7 @@ function App() {
         <div className="countzz">${bank.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</div>
         <div className="row mt-2 px-2">
           {items.map((item) => (
-            <Item key={item.id} bank={bank} onChange={setInfo} base={item} price={item.price} />
+            <Item key={item.id} bank={bank} base={item} price={item.price} />
           ))}
         </div>
 

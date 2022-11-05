@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setInfo } from '../redux/slices/ItemSlice';
 
-export const Item = ({ base, onChange, price, bank }) => {
+export const Item = ({ base,  price, bank }) => {
+
+  const dispatch = useDispatch()
   
   let [count, setCount] = useState(0);
   let sellClick = () => {
@@ -34,19 +38,18 @@ export const Item = ({ base, onChange, price, bank }) => {
   
 
   useEffect(() => {
-    onChange((prev) => {
-      return {
-        ...prev,
-        [base.id]: {
-          id: base.id,
-          name: base.name,
-          price,
-          count,
-        },
-      };
-      
-    });
+    let newObj = {
+      [base.id]: {
+        id: base.id,
+        name: base.name,
+        price,
+        count,
+      },
+    }
+    dispatch(setInfo(newObj))
   }, [count]);
+
+  
   return (
     <div className="col-lg-4 col-sm-6 col-12 px-1 my-1">
       <div className="product bg-white">
