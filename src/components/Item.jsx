@@ -1,35 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setInfo } from '../redux/slices/ItemSlice';
+import { setInfo } from '../redux/slices/MainSlice';
 
-export const Item = ({ base,  price, bank }) => {
+export const Item = ({ base, bank }) => {
+  let price = base.price
 
   const dispatch = useDispatch()
   
   let [count, setCount] = useState(0);
+
+
   let sellClick = () => {
     setCount(Number(count) - 1);
+
   };
   let buyClick = () => {
     if (price <= bank) {
       setCount(Number(count) + 1);
     }
-
   };
 
-  let changed = (e) => {
-    if (e.target.value < 0) {
-      setCount(0)
-    }
-  else if (e.target.value < count) {
-    setCount(e.target.value.replace(/^0+/, ''))
+  let inputChanged = (e) => {
+    if (e.target.value <= 0) {
+      setCount("0") 
+    } else if (e.target.value < count) {
+      setCount(e.target.value.replace(/^0+/, '')) //0 в начале убирается
 
-  } else if (((e.target.value) * price) > bank+(count*price)) {
-      let newBank = bank + ((count)*price)
-      setCount( Math.floor( newBank/price) )
+    } else if (((e.target.value) * price) > bank+(count*price)) {
+      let newBank = Math.floor((bank + (count * price)) / price)
+      // автозаполнение инпута при вводе значения выше возможнсти банка)
+      setCount(newBank)
 
-
-  } else {
+    } else {
       setCount(e.target.value.replace(/^0+/, '')); //0 в начале убирается
     }
     
@@ -58,7 +60,7 @@ export const Item = ({ base,  price, bank }) => {
         <p className="product__price">
           <span className="symbol">$</span>
           <span className="price">
-            {base.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
           </span>
         </p>
         <div className="buy-sell d-flex justify-content-between">
@@ -68,7 +70,7 @@ export const Item = ({ base,  price, bank }) => {
             className={`sell ${count < 1 ? 'disabled' : ''}`}>
             Sell
           </button>
-          <input className="quantity" value={count || 0} onChange={changed} type="number" />
+          <input className="quantity" value={count || 0} onChange={inputChanged} type="number" />
           <button
             disabled={bank < price ? true : false}
             onClick={buyClick}

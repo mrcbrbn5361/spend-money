@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const itemSlice = createSlice({
+export const mainSlice = createSlice({
   name: 'item',
   initialState: {
-    money: 100000000000,
+    money: 100_000_000_000,
     items: [],
     info: {},
   },
@@ -22,5 +22,5 @@ export const itemSlice = createSlice({
   },
 });
 
-export const { setItems, setInfo } = itemSlice.actions;
-export default itemSlice.reducer;
+export const { setItems, setInfo } = mainSlice.actions;
+export default mainSlice.reducer;
