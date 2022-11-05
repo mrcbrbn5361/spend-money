@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/spend-money/static/css/main.7fa62744.css",
+    "main.js": "/spend-money/static/js/main.996bb887.js",
+    "index.html": "/spend-money/index.html",
+    "main.7fa62744.css.map": "/spend-money/static/css/main.7fa62744.css.map",
+    "main.996bb887.js.map": "/spend-money/static/js/main.996bb887.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7fa62744.css",
+    "static/js/main.996bb887.js"
+  ]
+}
